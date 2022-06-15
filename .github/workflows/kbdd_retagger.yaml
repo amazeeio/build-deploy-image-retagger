@@ -22,8 +22,8 @@ jobs:
           # docker.io/${{ github.repository_owner }}/build-deploy-image
           ghcr.io/${{ github.repository_owner }}/build-deploy-image
         tags: |
-          production
-          ${{ fromJSON(env.tag) }}
+          type=raw,value=production
+          type=raw,value=${{ env.tag }}
     # - name: Login to DockerHub
     #   uses: docker/login-action@v1
     #   with:
@@ -38,6 +38,6 @@ jobs:
     - name: Push Image to multiple registries
       uses: akhilerm/tag-push-action@v2.0.0
       with:
-        src: ${{ fromJSON(env.image) }}:${{ fromJSON(env.tag) }}
+        src: ${{ env.image }}:${{ env.tag }}
         dst: |
           ${{ steps.meta.outputs.tags }}
