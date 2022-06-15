@@ -22,8 +22,8 @@ jobs:
           # docker.io/${{ github.repository_owner }}/build-deploy-image
           ghcr.io/${{ github.repository_owner }}/build-deploy-image
         tags: |
-          type=raw,value=production
-          type=raw,value=${{ fromJSON(env.tag) }}
+          production
+          ${{ fromJSON(env.tag) }}
     # - name: Login to DockerHub
     #   uses: docker/login-action@v1
     #   with:
