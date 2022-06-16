@@ -4,7 +4,7 @@ on: push
 
 env: 
   image: docker.io/uselagoon/kubectl-build-deploy-dind
-  tag: v2.8.2
+  tag: v2.8.3
 
 jobs:
   pull-tag-push:
