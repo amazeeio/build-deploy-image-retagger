@@ -15,7 +15,7 @@ This Repository runs a Github Action on a push to the main branch (straight push
 
 It performs:
 
-1. A docker pull of the upstream image and tag specified as envs in [the workflow](.github/workflows/kbdd_retagger.yaml#L6-L7)
+1. A docker pull of the upstream image and tag specified as envs in [the workflow](.github/workflows/production_retagger.yaml#L6-L7)
 2. The creation of a pair of new tags `:production` and a tag to match the upstream version
 3. A push of the same image digest from upstream to the following images
   * docker.io/amazeeio/build-deploy-image:production
