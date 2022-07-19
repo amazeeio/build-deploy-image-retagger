@@ -8,8 +8,10 @@ on:
       - '.github/workflows/production_retagger.yaml'
 
 env: 
-  image: docker.io/uselagoon/kubectl-build-deploy-dind
-  tag: v2.9.0
+#   image: docker.io/uselagoon/kubectl-build-deploy-dind
+#   tag: v2.9.0
+  image: docker.io/testlagoon/kubectl-build-deploy-dind
+  tag: pr-3218
 
 jobs:
   pull-tag-push:
