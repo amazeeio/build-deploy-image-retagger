@@ -8,8 +8,8 @@ on:
       - '.github/workflows/managed_retagger.yaml'
 
 env: 
-  image: docker.io/uselagoon/kubectl-build-deploy-dind
-  tag: v2.9.1
+  image: docker.io/uselagoon/build-deploy-image
+  tag: v0.18.0
 
 jobs:
   pull-tag-push:
