@@ -9,7 +9,7 @@ on:
 
 env: 
   image: docker.io/uselagoon/build-deploy-image
-  tag: pr-234
+  tag: core-v2.16.0
 
 jobs:
   pull-tag-push:
