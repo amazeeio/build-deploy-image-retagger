@@ -1,4 +1,4 @@
-# Lagoon build-deploy-image retagger
+# Lagoon image retagger
 
 With the rapid pace of development in Lagoon, we have observed that the tagged release of Lagoon will cause
 an updated `uselagoon/kubectl-build-deploy:latest` to be published. As this image is referenced in all of our remote-controllers, we want to avoid any inadvertent releases of functionality that may not be available on the production amazee.io clusters.

@@ -1,15 +1,15 @@
-name: 'Tag production image'
+name: 'Tag database task production image'
 
 on: 
   push:
     branches:
       - main
     paths:
-      - '.github/workflows/production_retagger.yaml'
+      - '.github/workflows/dbtask_production_retagger.yaml'
 
 env: 
-  image: docker.io/uselagoon/build-deploy-image
-  tag: pr-379
+  image: docker.io/uselagoon/database-image-task
+  tag: v0.0.3
 
 jobs:
   pull-tag-push:
@@ -24,8 +24,8 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         images: |
-          docker.io/${{ github.repository_owner }}/build-deploy-image
-          ghcr.io/${{ github.repository_owner }}/build-deploy-image
+          docker.io/${{ github.repository_owner }}/database-image-task
+          ghcr.io/${{ github.repository_owner }}/database-image-task
         tags: |
           type=raw,value=production
           type=raw,value=${{ env.tag }}
