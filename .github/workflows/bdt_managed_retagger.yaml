@@ -1,0 +1,48 @@
+name: 'Tag build-deploy managed image'
+
+on: 
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/bdt_managed_retagger.yaml'
+
+env: 
+  image: docker.io/uselagoon/build-deploy-image
+  tag: pr-379
+
+jobs:
+  pull-tag-push:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: "0"
+    - name: Docker meta
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: |
+          docker.io/${{ github.repository_owner }}/build-deploy-image
+          ghcr.io/${{ github.repository_owner }}/build-deploy-image
+        tags: |
+          type=raw,value=managed
+          type=raw,value=${{ env.tag }}
+    - name: Login to DockerHub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Login to GHCR
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Push Image to multiple registries
+      uses: akhilerm/tag-push-action@v2.2.0
+      with:
+        src: ${{ env.image }}:${{ env.tag }}
+        dst: |
+          ${{ steps.meta.outputs.tags }}

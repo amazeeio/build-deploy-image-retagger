@@ -1,11 +1,11 @@
-name: 'Tag managed image'
+name: 'Tag build-deploy production image'
 
 on: 
   push:
     branches:
       - main
     paths:
-      - '.github/workflows/managed_retagger.yaml'
+      - '.github/workflows/bdt_production_retagger.yaml'
 
 env: 
   image: docker.io/uselagoon/build-deploy-image
@@ -27,7 +27,7 @@ jobs:
           docker.io/${{ github.repository_owner }}/build-deploy-image
           ghcr.io/${{ github.repository_owner }}/build-deploy-image
         tags: |
-          type=raw,value=managed
+          type=raw,value=production
           type=raw,value=${{ env.tag }}
     - name: Login to DockerHub
       uses: docker/login-action@v3
