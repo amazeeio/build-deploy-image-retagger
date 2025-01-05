@@ -9,7 +9,7 @@ on:
 
 env: 
   image: docker.io/uselagoon/build-deploy-image
-  tag: core-v2.22.0
+  tag: core-v2.23.0
 
 jobs:
   pull-tag-push:
